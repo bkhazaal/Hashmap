@@ -13,6 +13,8 @@ const data = {};
 const testkey = process.argv[2];
 
 const hashCode = hash(testkey);
-data[hashCode] = testkey.charAt(0);
+const upper = hashCode;
+
+data[upper] = testkey.charAt(0).toUpperCase();
 
 console.log(data[hash(testkey)]);
