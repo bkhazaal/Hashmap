@@ -1,20 +1,25 @@
 function hash(key) {
+    if (!key) {
+        console.error("value must be greater than zero")
+        return;
+    }
     let hashCode = 0;
 
     const primeNumber = 31;
+    
+    
     for (let i = 0; i < key.length; i++) {
         hashCode = primeNumber * hashCode + key.charCodeAt(i);
     }
-    return hashCode;
     
 }
 
 const data = {};
 const testkey = process.argv[2];
+const Hasher = hash(testkey);
 
-const hashCode = hash(testkey);
-const upper = hashCode;
 
-data[upper] = testkey.charAt(0).toUpperCase();
+data[Hasher] = testkey && typeof testkey === "string" && 
+testkey.charAt(0).toUpperCase(); 
 
-console.log(data[hash(testkey)]);
+testkey && console.log(data[hash(testkey)]);
